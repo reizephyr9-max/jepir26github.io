@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Saskia 🌸</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ================= LOGIN ================= */
+
+        #loginPage {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at top, #ffd6e7, transparent 40%),
+                linear-gradient(135deg, #fff0f6, #ffe1ec);
+        }
+
+        .login-box {
+            width: 90%;
+            max-width: 380px;
+            padding: 40px 30px;
+
+            background: rgba(255,255,255,0.9);
+            border-radius: 25px;
+            text-align: center;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+
+            animation: muncul 1s ease;
+        }
+
+        .lock {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .login-box h1 {
+            color: #d94f83;
+            margin-bottom: 8px;
+        }
+
+        .login-box p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+
+            border: 1px solid #ffc1d8;
+            border-radius: 12px;
+
+            outline: none;
+            font-size: 15px;
+        }
+
+        .login-box input:focus {
+            border-color: #e85d91;
+            box-shadow: 0 0 10px rgba(232,93,145,0.2);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: linear-gradient(135deg, #e85d91, #d83e78);
+
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-box button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(216,62,120,0.3);
+        }
+
+        #error {
+            color: #e53935;
+            margin-top: 15px;
+        }
+
+
+        /* ================= HALAMAN UTAMA ================= */
+
+        #mainPage {
+            display: none;
+            background: #fff7fa;
+        }
+
+
+        /* ================= BUNGA PEMBUKA ================= */
+
+        .flower-section {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(to bottom, #fff0f6, #ffe0eb);
+        }
+
+        .opening-text {
+            color: #c83f70;
+            font-size: 42px;
+
+            opacity: 0;
+
+            animation: textMuncul 2s 2.5s forwards;
+        }
+
+        .sub-text {
+            margin-top: 15px;
+            color: #777;
+
+            opacity: 0;
+
+            animation: textMuncul 2s 3s forwards;
+        }
+
+
+        /* ================= BUNGA ================= */
+
+        .flower {
+            position: absolute;
+            font-size: 70px;
+
+            opacity: 0;
+
+            animation:
+                flowerAppear 1s forwards,
+                floating 4s ease-in-out infinite;
+        }
+
+        .flower1 {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0.5s;
+        }
+
+        .flower2 {
+            right: 12%;
+            top: 15%;
+            animation-delay: 1s;
+        }
+
+        .flower3 {
+            left: 18%;
+            bottom: 20%;
+            animation-delay: 1.5s;
+        }
+
+        .flower4 {
+            right: 20%;
+            bottom: 15%;
+            animation-delay: 2s;
+        }
+
+        .flower5 {
+            left: 45%;
+            top: 10%;
+            animation-delay: 2.5s;
+        }
+
+
+        /* ================= KARTU ================= */
+
+        .card-section {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 60px 20px;
+
+            background:
+                radial-gradient(circle at top, #ffd7e6, transparent 45%),
+                #fff7fa;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 600px;
+
+            padding: 45px 35px;
+
+            background: rgba(255,255,255,0.95);
+
+            border-radius: 25px;
+            text-align: center;
+
+            box-shadow: 0 20px 60px rgba(200,63,112,0.15);
+
+            animation: cardMuncul 1.5s ease;
+        }
+
+        .card-flower {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .card h2 {
+            color: #c83f70;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+            margin: 18px 0;
+        }
+
+        .last-message {
+            color: #c83f70 !important;
+            font-weight: bold;
+        }
+
+        .signature {
+            margin-top: 30px;
+            color: #999;
+            font-style: italic;
+        }
+
+
+        /* ================= PENUTUP ================= */
+
+        .ending {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(to bottom, #ffe5ef, #ffd3e3);
+
+            padding: 30px;
+        }
+
+        .ending h2 {
+            color: #c83f70;
+            font-size: 30px;
+            margin: 30px 0 15px;
+        }
+
+        .ending p {
+            color: #777;
+        }
+
+        .ending-flowers {
+            display: flex;
+            gap: 25px;
+
+            font-size: 60px;
+
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .ending-flowers span {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        .ending-flowers span:nth-child(2) {
+            animation-delay: .3s;
+        }
+
+        .ending-flowers span:nth-child(3) {
+            animation-delay: .6s;
+        }
+
+        .ending-flowers span:nth-child(4) {
+            animation-delay: .9s;
+        }
+
+        .ending-flowers span:nth-child(5) {
+            animation-delay: 1.2s;
+        }
+
+        .big-flower {
+            font-size: 100px;
+            margin-top: 30px;
+
+            animation: floating 3s ease-in-out infinite;
+        }
+
+
+        /* ================= ANIMASI ================= */
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes textMuncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flowerAppear {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+
+        @keyframes cardMuncul {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* ================= HP ================= */
+
+        @media (max-width: 600px) {
+
+            .opening-text {
+                font-size: 32px;
+            }
+
+            .flower {
+                font-size: 50px;
+            }
+
+            .card {
+                padding: 35px 25px;
+            }
+
+            .card h2 {
+                font-size: 27px;
+            }
+
+            .ending h2 {
+                font-size: 25px;
+            }
+
+            .ending-flowers {
+                font-size: 45px;
+                gap: 10px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <div id="loginPage">
+
+        <div class="login-box">
+
+            <div class="lock">
+                🔐
+            </div>
+
+            <h1>Untuk Saskia</h1>
+
+            <p>
+                Ada sesuatu buat kamu 🌸
+            </p>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Username"
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+            >
+
+            <button onclick="login()">
+                Masuk 💗
+            </button>
+
+            <p id="error"></p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= HALAMAN UTAMA ================= -->
+
+    <div id="mainPage">
+
+
+        <!-- BUNGA PEMBUKA -->
+
+        <section class="flower-section">
+
+            <div class="flower flower1">🌸</div>
+            <div class="flower flower2">🌷</div>
+            <div class="flower flower3">🌹</div>
+            <div class="flower flower4">🌻</div>
+            <div class="flower flower5">🌷</div>
+
+            <h1 class="opening-text">
+                Untuk Saskia... 🌸
+            </h1>
+
+            <p class="sub-text">
+                Ada sedikit sesuatu yang ingin aku sampaikan.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= KARTU UCAPAN ================= -->
+
+        <section class="card-section">
+
+            <div class="card">
+
+                <div class="card-flower">
+                    🌸
+                </div>
+
+                <h2>
+                    Selamat 1 Oktober, Saskia 🤍
+                </h2>
+
+                <p>
+                    Hai, Saskia...
+                </p>
+
+                <p>
+                    Maaf yaa, aku telat ngucapinnya.
+                    Harusnya dari awal aku udah ngucapin,
+                    tapi baru sekarang aku sempat menyampaikannya.
+                </p>
+
+                <p>
+                    Selamat Hari Perempuan untuk kamu.
+                    Semoga kamu selalu dikelilingi hal-hal baik,
+                    orang-orang yang tulus, dan alasan-alasan
+                    untuk terus tersenyum.
+                </p>
+
+                <p>
+                    Aku mungkin nggak selalu bisa
+                    ngasih sesuatu yang besar,
+                    tapi aku harap ucapan sederhana ini
+                    bisa sedikit membuat hari kamu lebih berarti.
+                </p>
+
+                <p>
+                    Terima kasih karena sudah menjadi
+                    seseorang yang pernah memberikan
+                    warna di hari-hariku.
+                </p>
+
+                <p>
+                    Aku berharap kamu selalu bahagia,
+                    selalu kuat menghadapi semuanya,
+                    dan semoga apa pun yang sedang kamu
+                    perjuangkan bisa perlahan tercapai.
+                </p>
+
+                <p class="last-message">
+                    Sekali lagi, selamat 1 Oktober, Saskia. 🌷
+                    Maaf yaa telat ngucapinnya.
+                </p>
+
+                <div class="signature">
+                    — dari aku, yang masih ingin memberikan
+                    satu ucapan kecil untuk kamu 🤍
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PENUTUP ================= -->
+
+        <section class="ending">
+
+            <div class="ending-flowers">
+
+                <span>🌷</span>
+                <span>🌸</span>
+                <span>🌹</span>
+                <span>🌻</span>
+                <span>🌷</span>
+
+            </div>
+
+            <h2>
+                Semoga kamu selalu bahagia, Saskia.
+            </h2>
+
+            <p>
+                Selamat 1 Oktober 🤍
+            </p>
+
+            <div class="big-flower">
+                🌸
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function login() {
+
+            // LOGIN YANG BENAR
+            const usernameBenar = "saskia";
+            const passwordBenar = "saskia";
+
+
+            const username =
+                document.getElementById("username").value;
+
+            const password =
+                document.getElementById("password").value;
+
+
+            const error =
+                document.getElementById("error");
+
+
+            if (
+                username === usernameBenar &&
+                password === passwordBenar
+            ) {
+
+                document.getElementById("loginPage")
+                    .style.display = "none";
+
+                document.getElementById("mainPage")
+                    .style.display = "block";
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            } else {
+
+                error.innerHTML =
+                    "Username atau password salah 😭";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
